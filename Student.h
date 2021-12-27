@@ -19,6 +19,7 @@ typedef struct Student{
     float inclass;
     float outclass;
     float gpa;
+    struct Student * pre;
     struct Student * next;
 } Student;
 
@@ -33,16 +34,20 @@ typedef struct Major{
 
 typedef struct School{
     Student * head;
-    Student * end;
+    Student * tail;
 } School;
 
 
-
+// Data operations
 void initSchool(School * school);
 void addStudent(Student * stu, School * school);
-void addStudentUI(School * school);
+void delStudent(Student * stu, School * school);
 void showStudent(School * school);
 
+
+
+// UI
+void addStudentUI(School * school);
 
 
 

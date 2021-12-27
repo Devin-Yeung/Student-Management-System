@@ -7,6 +7,7 @@
 
 void initSchool(School * school){
     school -> head = NULL;
+    school -> tail = NULL;
     return;
 }
 
@@ -18,13 +19,29 @@ void addStudent(Student * stu, School * school){
     // check if school is empty
     if(school -> head == NULL){
         school -> head = stu;
-        school -> end = stu;
+        school -> tail = stu;
+        stu -> pre = NULL;
+        stu -> next = NULL;
     }
     else{
-        school -> end -> next = stu;
-        school -> end = stu;
+        // link previous tail to current tail
+        school -> tail -> next = stu;
+        // set the next node of the new node
+        stu -> next = NULL;
+        // set the previous node of current node
+        stu -> pre = school -> tail;
+        // reset the tail node of the list
+        school -> tail = stu;
     }
     return;
+}
+
+
+
+
+
+void delStudent(Student * stu, School * school){
+
 }
 
 
