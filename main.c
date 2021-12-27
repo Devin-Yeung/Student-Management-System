@@ -10,5 +10,8 @@ int main(void){
     initSchool(&school);
     readFile(&school);
     showStudent(&school);
+    // testing filter
+    FilterList filterList;
+    initFilter(&school,&filterList);
     return 0;
 }

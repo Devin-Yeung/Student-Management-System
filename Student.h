@@ -25,6 +25,32 @@ typedef struct Student{
 
 
 
+typedef struct School{
+    Student * head;
+    Student * tail;
+} School;
+
+
+
+
+
+typedef struct Filter {
+    Student * stu;
+    struct Filter * pre;
+    struct Filter * next;
+} Filter;
+
+
+
+typedef struct FilterList {
+    Filter * head;
+    Filter * tail;
+} FilterList;
+
+
+
+
+
 typedef struct Major{
     char title[MAJORLEN];
     struct Major * next;
@@ -32,10 +58,6 @@ typedef struct Major{
 
 
 
-typedef struct School{
-    Student * head;
-    Student * tail;
-} School;
 
 
 // Data operations
@@ -46,13 +68,23 @@ void showStudent(School * school);
 
 
 
+
+
+// filter
+void initFilter (School * school, FilterList * filterList);
+void addFilter(Filter * filter, FilterList * filterList);
+void delFilter(Filter * filter, FilterList * filterList);
+
+
+
+
 // UI
+
 void addStudentUI(School * school);
 
 
 
 // file operation
-
 void readFile (School * school);
 
 

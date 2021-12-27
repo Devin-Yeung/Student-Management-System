@@ -1,9 +1,9 @@
-main: main.c Student.h Student.c UI.c File.c
-	gcc -std=c99 main.c Student.c UI.c File.c -o main.out
+main: main.c Student.h Student.c Filter.c UI.c File.c
+	gcc -std=c99 -Wall main.c Student.c Filter.c UI.c File.c -o main.out
 	./main.out
 
-debug: main.c Student.h Student.c UI.c File.c
-	gcc -std=c99 -g main.c Student.c UI.c File.c -o main.out
+debug: main.c Student.h Student.c Filter.c UI.c File.c
+	gcc -std=c99 -Wall -g main.c Student.c Filter.c UI.c File.c -o main.out
 	lldb main.out
 
 clean: 
