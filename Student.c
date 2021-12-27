@@ -24,7 +24,7 @@ void addStudent(Student * stu, School * school){
         stu -> next = NULL;
     }
     else{
-        // link previous tail to current tail
+        // link previous tail to the new node
         school -> tail -> next = stu;
         // set the next node of the new node
         stu -> next = NULL;
@@ -39,9 +39,40 @@ void addStudent(Student * stu, School * school){
 
 
 
-
+// Need to test later
 void delStudent(Student * stu, School * school){
+    if(stu == NULL){
+        return;
+    }
 
+    // if the deleted stu is the first stu in the list
+    if(stu == school -> head){
+        // which means there is only one student in the list
+        if(school -> head == school -> tail){
+            // reset head and tail
+            school -> head = NULL;
+            school -> tail = NULL;
+            free(stu);
+            return;
+        }
+        
+        // reset head
+        school -> head = stu -> next;
+        free(stu);
+    }
+    // if the deleted stu is the last student in the list
+    else if(stu == school -> tail){
+        Student * preStu = stu -> pre;
+        preStu -> next = NULL;
+        school -> tail = preStu;
+    }
+    // if the deleted stu is NOT the first student or the last student in the list
+    else {
+        Student * preStu = stu -> pre;
+        Student * nextStu = stu -> next;
+        preStu -> next = nextStu;
+        free(stu);
+    }
 }
 
 
