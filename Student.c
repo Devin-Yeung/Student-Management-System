@@ -65,12 +65,14 @@ void delStudent(Student * stu, School * school){
         Student * preStu = stu -> pre;
         preStu -> next = NULL;
         school -> tail = preStu;
+        free(stu);
     }
     // if the deleted stu is NOT the first student or the last student in the list
     else {
         Student * preStu = stu -> pre;
         Student * nextStu = stu -> next;
         preStu -> next = nextStu;
+        nextStu -> pre = preStu;
         free(stu);
     }
 }

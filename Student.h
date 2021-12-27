@@ -74,6 +74,8 @@ void showStudent(School * school);
 void initFilter (School * school, FilterList * filterList);
 void addFilter(Filter * filter, FilterList * filterList);
 void delFilter(Filter * filter, FilterList * filterList);
+void showFilter(FilterList * filterList);
+void filterByClass(int class, FilterList * filterList);
 
 
 
