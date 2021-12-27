@@ -20,15 +20,15 @@ void readFile (School * school){
         int count;
 
         count = fscanf(fp,"%s%s%d%d%f%f%f%f%f%f",stu -> major,
-                                              stu -> name,
-                                              &stu -> year,
-                                              &stu -> class,
-                                              &stu -> math,
-                                              &stu -> english,
-                                              &stu -> chinese,
-                                              &stu -> inclass,
-                                              &stu -> outclass,
-                                              &stu -> gpa); 
+                                                 stu -> name,
+                                                 &stu -> year,
+                                                 &stu -> class,
+                                                 &stu -> math,
+                                                 &stu -> english,
+                                                 &stu -> chinese,
+                                                 &stu -> inclass,
+                                                 &stu -> outclass,
+                                                 &stu -> gpa);
         
         // if counter <10 means EOF or wrong file input
         if(count != 10){

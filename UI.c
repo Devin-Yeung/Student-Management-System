@@ -15,9 +15,6 @@ void addStudentUI(School * school){
     printf("请输入入学年份:\n");
     scanf("%d",&year);
 
-    
-
-
     addStudent(pstu,school);
     return;
 }
