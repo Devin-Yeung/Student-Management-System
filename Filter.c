@@ -21,7 +21,23 @@ void initFilter (School * school, FilterList * filterList){
 
 
 
- 
+
+
+void destoryFilter(FilterList * filterList){
+    Filter * pfilter = filterList -> head;
+    while(pfilter != NULL){
+        Filter * tmp = pfilter -> next;
+        free(pfilter);
+        // advance pointer
+        pfilter = tmp;
+    }
+    filterList -> head = NULL;
+    filterList -> tail = NULL;
+}
+
+
+
+
 
 void addFilter(Filter * filter, FilterList * filterList){
     // check if FilterList is empty
@@ -128,7 +144,9 @@ void filterByClass(int class, FilterList * filterList){
             delFilter(pfilter,filterList);
             pfilter = tmp;
         }
-        pfilter = pfilter -> next;
+        else{
+            pfilter = pfilter -> next;
+        }
     }
 }
 
@@ -146,7 +164,9 @@ void filterByName(char * name, FilterList * filterList){
             delFilter(pfilter,filterList);
             pfilter = tmp;
         }
-        pfilter = pfilter -> next;
+        else{
+            pfilter = pfilter -> next;
+        }
     }
 }
 
@@ -169,6 +189,28 @@ void filterByYear(int year, FilterList * filterList){
             delFilter(pfilter,filterList);
             pfilter = tmp;
         }
-        pfilter = pfilter -> next;
+        else{
+            pfilter = pfilter -> next;
+        }
+    }
+}
+
+
+
+
+
+void filterByMajor(char * major, FilterList * filterList){
+    Filter * pfilter = filterList -> head;
+
+    while(pfilter != NULL){
+        Student * pstu = pfilter -> stu;
+        if (strcmp(major,pstu -> major) != 0){
+            Filter * tmp = pfilter -> next;
+            delFilter(pfilter,filterList);
+            pfilter = tmp;
+        }
+        else{
+            pfilter = pfilter -> next;
+        }
     }
 }

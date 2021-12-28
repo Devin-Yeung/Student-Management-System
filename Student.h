@@ -72,17 +72,20 @@ void showStudent(School * school);
 
 // filter
 void initFilter (School * school, FilterList * filterList);
+void destoryFilter(FilterList * filterList);
 void addFilter(Filter * filter, FilterList * filterList);
 void delFilter(Filter * filter, FilterList * filterList);
 void showFilter(FilterList * filterList);
 void filterByClass(int class, FilterList * filterList);
 void filterByName(char * name, FilterList * filterList);
 void filterByYear(int year, FilterList * filterList);
+void filterByMajor(char * major, FilterList * filterList);
+
+
 
 
 
 // UI
-
 void addStudentUI(School * school);
 
 

@@ -11,9 +11,9 @@ fake: FakeData.c Student.h Student.c Filter.c UI.c File.c
 	@./fake.out
 
 clean: 
-	@if [ -e *.out ]; then \
+	@if [ -e main.out ]; then \
 		rm *.out; \
 	fi
-	@if [ -e *.dSYM ]; then \
+	@if [ -e main.dSYM ]; then \
 		rm -r *.dSYM; \
 	fi
