@@ -76,7 +76,8 @@ void addFilter(Filter * filter, FilterList * filterList);
 void delFilter(Filter * filter, FilterList * filterList);
 void showFilter(FilterList * filterList);
 void filterByClass(int class, FilterList * filterList);
-
+void filterByName(char * name, FilterList * filterList);
+void filterByYear(int year, FilterList * filterList);
 
 
 

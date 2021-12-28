@@ -12,9 +12,8 @@ int main(void){
     showStudent(&school);
     // testing filter
     FilterList filterList;
+    // showFilter(&filterList);
     initFilter(&school,&filterList);
-    showFilter(&filterList);
-    filterByClass(1,&filterList);
     showFilter(&filterList);
     return 0;
 }

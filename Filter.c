@@ -90,7 +90,6 @@ void delFilter(Filter * filter, FilterList * filterList){
 
 
 
-
 void showFilter(FilterList * filterList){
 
     // print the head of the table
@@ -125,8 +124,50 @@ void filterByClass(int class, FilterList * filterList){
     while(pfilter != NULL){
         Student * pstu = pfilter -> stu;
         if (pstu -> class != class){
-            // need a tmp ?
+            Filter * tmp = pfilter -> next;
             delFilter(pfilter,filterList);
+            pfilter = tmp;
+        }
+        pfilter = pfilter -> next;
+    }
+}
+
+
+
+
+
+void filterByName(char * name, FilterList * filterList){
+    Filter * pfilter = filterList -> head;
+
+    while(pfilter != NULL){
+        Student * pstu = pfilter -> stu;
+        if (strcmp(name,pstu -> name)){
+            Filter * tmp = pfilter -> next;
+            delFilter(pfilter,filterList);
+            pfilter = tmp;
+        }
+        pfilter = pfilter -> next;
+    }
+}
+
+
+
+
+
+
+void filterByYear(int year, FilterList * filterList){
+    if(1 <= year && year <= 4){
+        // hard code here, can be improved
+        year += 2020;
+    }
+    
+    Filter * pfilter = filterList -> head;
+    while(pfilter != NULL){
+        Student * pstu = pfilter -> stu;
+        if (pstu -> year != year){
+            Filter * tmp = pfilter -> next;
+            delFilter(pfilter,filterList);
+            pfilter = tmp;
         }
         pfilter = pfilter -> next;
     }
