@@ -107,6 +107,11 @@ void delFilter(Filter * filter, FilterList * filterList){
 
 
 void showFilter(FilterList * filterList){
+    
+    if(filterList -> head == NULL){
+        printf("Nothing match\n");
+        return;
+    }
 
     // print the head of the table
     printf("|%-15s\t%-10s%-14s\t%-14s%-14s%-14s%-20s%-20s%-7s|\n","专业","班级","姓名","高数","英语","语文","学业总成绩","课外表现分","绩点");

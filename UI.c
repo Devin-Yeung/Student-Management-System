@@ -29,14 +29,53 @@ void filterByClassUI(FilterList * filterList){
     fflush(stdin);
     scanf("%d",&class);
     filterByClass(class,filterList);
+    return;
 }
 
 
 
 
 
+void filterByYearUI(FilterList * filterList){
+    int year;
+    printf("请输入年级或入学年份:");
+    fflush(stdin);
+    scanf("%d",&year);
+    filterByYear(year,filterList);
+    return;
+}
 
-void multiFilterUI (School * school){
+
+
+
+
+void filterByNameUI(FilterList * filterList){
+    char name[NAMELEN];
+    printf("请输入学生名称:");
+    fflush(stdin);
+    scanf("%s",name);
+    filterByMajor(name,filterList);
+    return;
+}
+
+
+
+
+
+void filterByMajorUI(FilterList * filterList){
+    char major[MAJORLEN];
+    printf("请输入专业名称:");
+    fflush(stdin);
+    scanf("%s",major);
+    filterByName(major,filterList);
+    return;
+}
+
+
+
+
+
+void multiFilterUI(School * school){
     FilterList filterList;
     initFilter(school,&filterList);
     while(1){
@@ -62,18 +101,29 @@ void multiFilterUI (School * school){
                     showFilter(&filterList);
                     break;
             case 2:
+                    filterByNameUI(&filterList);
+                    showFilter(&filterList);
                     break;
             case 3:
+                    filterByYearUI(&filterList);
+                    showFilter(&filterList);
                     break;
             case 4:
+                    filterByMajorUI(&filterList);
+                    showFilter(&filterList);
                     break;
             case 5:
                     break;
             case 6:
+                    destoryFilter(&filterList);
+                    initFilter(school,&filterList);
                     break;
             case 7:
                     break;
             case 8:
+                    break;
+            case 9:
+                    return;
                     break;
             default:
                     break;

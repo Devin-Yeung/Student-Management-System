@@ -1,4 +1,3 @@
-#include "Student.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,7 +18,7 @@ void randomStu(FILE * fp, int counter);
 
 
 int main(void){
-    FILE * fp = fopen("fake.txt","w");
+    FILE * fp = fopen("stu.txt","w");
     if(fp == NULL){
         return -1;
     }
