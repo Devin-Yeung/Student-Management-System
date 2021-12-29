@@ -85,8 +85,10 @@ void filterByMajor(char * major, FilterList * filterList);
 
 
 
+
 // UI
 void addStudentUI(School * school);
+void multiFilterUI (School * school);
 
 
 

@@ -11,11 +11,6 @@ int main(void){
     readFile(&school);
     // showStudent(&school);
     // testing filter
-    FilterList filterList;
-    // showFilter(&filterList);
-    initFilter(&school,&filterList);
-    filterByMajor("教育学",&filterList);
-    showFilter(&filterList);
-    destoryFilter(&filterList);
+    multiFilterUI(&school);
     return 0;
 }

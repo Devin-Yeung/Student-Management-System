@@ -6,17 +6,17 @@
 
 
 void initFilter (School * school, FilterList * filterList){
+    filterList -> head = NULL;
+    filterList -> tail = NULL;    
     Student * pstu = school -> head;
-    Filter * pfilter = filterList -> head;
     
     while(pstu != NULL){
-        pfilter = (Filter*)malloc(sizeof(Filter));
+        Filter * pfilter = (Filter*)malloc(sizeof(Filter));
         pfilter -> stu = pstu;
         addFilter(pfilter, filterList);
         pstu = pstu -> next;
     }
     return;
-
 }
 
 
@@ -77,7 +77,7 @@ void delFilter(Filter * filter, FilterList * filterList){
             // reset head and tail
             filterList -> head = NULL;
             filterList -> tail = NULL;
-            free(filterList);
+            free(filter);
             return;
         }
         
