@@ -1,5 +1,14 @@
-# user data file
+# User data file
 *.txt
+
+# Compile script
+*.bat
+
+# Release
+*.zip
+
+# Hidden File
+.DS_Store
 
 # Prerequisites
 *.d
