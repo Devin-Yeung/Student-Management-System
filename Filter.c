@@ -164,7 +164,7 @@ void filterByName(char * name, FilterList * filterList){
 
     while(pfilter != NULL){
         Student * pstu = pfilter -> stu;
-        if (strcmp(name,pstu -> name)){
+        if (strcmp(name,pstu -> name)!= 0){
             Filter * tmp = pfilter -> next;
             delFilter(pfilter,filterList);
             pfilter = tmp;

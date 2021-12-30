@@ -54,7 +54,7 @@ void filterByNameUI(FilterList * filterList){
     printf("请输入学生名称:");
     fflush(stdin);
     scanf("%s",name);
-    filterByMajor(name,filterList);
+    filterByName(name,filterList);
     return;
 }
 
@@ -67,7 +67,7 @@ void filterByMajorUI(FilterList * filterList){
     printf("请输入专业名称:");
     fflush(stdin);
     scanf("%s",major);
-    filterByName(major,filterList);
+    filterByMajor(major,filterList);
     return;
 }
 
