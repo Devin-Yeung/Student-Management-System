@@ -99,6 +99,12 @@ void filterByMajorUI(FilterList * filterList);
 
 
 
+// stat
+void showStat(FilterList * filterList);
+
+
+
+
 // file operation
 void readFile (School * school);
 
