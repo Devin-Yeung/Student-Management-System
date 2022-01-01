@@ -8,15 +8,15 @@
 void showStat(FilterList * filterList){
     float gpaAvg = 0;
     float gpaMax = 0;
-    float gpaMin = 0;
+    float gpaMin = 32767;
 
     float inclassAvg = 0;
     float inclassMax = 0;
-    float inclassMin = 0;
+    float inclassMin = 32767;
 
     float outclassAvg = 0;
     float outclassMax = 0;
-    float outclassMin = 0;
+    float outclassMin = 32767;
 
     int counter = 0;
 

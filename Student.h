@@ -70,9 +70,13 @@ void showStudent(School * school);
 
 // filter
 void initFilter (School * school, FilterList * filterList);
+void reinitFilter(FilterList * filterList);
 void destoryFilter(FilterList * filterList);
 void addFilter(Filter * filter, FilterList * filterList);
 void delFilter(Filter * filter, FilterList * filterList);
+Filter * mergeFilter(Filter * f1, Filter * f2);
+Filter * toSortFilter(Filter * head, Filter * tail);
+void sortFilter(FilterList * filterList);
 void showFilter(FilterList * filterList);
 void filterByClass(int class, FilterList * filterList);
 void filterByName(char * name, FilterList * filterList);

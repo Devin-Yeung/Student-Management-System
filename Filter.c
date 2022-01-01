@@ -23,6 +23,39 @@ void initFilter (School * school, FilterList * filterList){
 
 
 
+void reinitFilter(FilterList * filterList){
+    Filter * pfilter = filterList -> head;
+
+    if(pfilter == NULL){
+        filterList -> head = NULL;
+        filterList -> head = NULL;
+        return;
+    }
+
+    // reset head
+    filterList -> head = pfilter;
+    // reset the pre of first node
+    pfilter -> pre = NULL;
+
+    Filter * tmp = NULL;
+    while(pfilter != NULL){
+        if(pfilter -> next == NULL){
+            // reset tail
+            filterList -> tail = pfilter;
+        }
+
+        // reinit the pre node
+        pfilter -> pre = tmp;
+        // reset pre
+        tmp = pfilter;
+        pfilter = pfilter -> next;
+    }
+}
+
+
+
+
+
 void destoryFilter(FilterList * filterList){
     Filter * pfilter = filterList -> head;
     while(pfilter != NULL){
@@ -105,9 +138,80 @@ void delFilter(Filter * filter, FilterList * filterList){
 
 
 
+ 
+Filter * mergeFilter(Filter * f1, Filter * f2){
+
+    //  check if list is empty
+     if(f1 == NULL){
+         return f2;
+     }
+     
+     if(f2 == NULL){
+         return f1;
+     }
+
+    if(f1 -> stu -> gpa > f2 -> stu -> gpa){
+        f1 -> next = mergeFilter(f1 -> next, f2);
+        return f1;
+    }
+    else{
+        f2 -> next = mergeFilter(f2 -> next, f1);
+        return f2;
+    }
+
+ }
+
+
+
+Filter * toSortFilter(Filter * head, Filter * tail){
+    // check if list is empty
+    if(head == NULL){
+        return head;
+    }
+
+    // if there is only one node
+    if(head == tail){
+        return head;
+    }
+    
+    // if there only two nodes in the list(stop)
+    if(head -> next == tail){
+        head -> next = NULL;
+        tail -> next = NULL;
+        return mergeFilter(head,tail);
+    }
+
+    // fast,slow pointer to find the mid point 
+    Filter * fast = head;
+    Filter * slow = head;
+    while(fast != tail){
+        // advance pointer
+        fast = fast -> next;
+        if(fast != tail){
+            slow = slow -> next;
+            // advance fast pointer twice
+            fast = fast -> next;
+        }
+    }
+    Filter * tmp = slow -> next;
+    slow -> next = NULL;
+    return mergeFilter(toSortFilter(head, slow),toSortFilter(tmp, tail));
+}
+
+
+
+
+
+void sortFilter(FilterList * filterList){
+    Filter * head = filterList -> head;
+    Filter * tail = filterList -> tail;
+    filterList -> head = toSortFilter(head,tail);
+    reinitFilter(filterList);
+}
+
 
 void showFilter(FilterList * filterList){
-    
+
     if(filterList -> head == NULL){
         printf("Nothing match\n");
         return;

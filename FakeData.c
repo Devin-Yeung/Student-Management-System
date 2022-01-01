@@ -18,12 +18,16 @@ void randomStu(FILE * fp, int counter);
 
 
 int main(void){
+    int num;
+    printf("pls input the number of data you want to generate:");
+    scanf("%d",&num);
+    
     FILE * fp = fopen("stu.txt","w");
     if(fp == NULL){
         return -1;
     }
     fflush(fp);
-    randomStu(fp,1000);
+    randomStu(fp,num);
     fclose(fp);
     return 0;
 }

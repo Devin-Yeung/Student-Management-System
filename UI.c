@@ -88,8 +88,9 @@ void multiFilterUI(School * school){
         printf("*      6) Reset Filter             *\n");
         printf("*      7) Delete                   *\n");
         printf("*      8) Keep                     *\n");
-        printf("*      9) Stat                     *\n");        
-        printf("*      10) Quit                    *\n");
+        printf("*      9) Stat                     *\n");
+        printf("*      10) Sort                    *\n");
+        printf("*      11) Quit                    *\n");
         printf("*==================================*\n");
         printf("Please enter the choice number to select the operation:");
         // clean stdin
@@ -118,6 +119,7 @@ void multiFilterUI(School * school){
             case 6:
                     destoryFilter(&filterList);
                     initFilter(school,&filterList);
+                    showFilter(&filterList);
                     break;
             case 7:
                     break;
@@ -127,6 +129,10 @@ void multiFilterUI(School * school){
                     showStat(&filterList);
                     break;
             case 10:
+                    sortFilter(&filterList);
+                    showFilter(&filterList);
+                    break;
+            case 11:
                     return;
                     break;
             default:
