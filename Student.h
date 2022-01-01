@@ -8,6 +8,8 @@
 
 
 
+
+
 typedef struct Student{
     int year;
     int class;
@@ -32,8 +34,6 @@ typedef struct School{
 
 
 
-
-
 typedef struct Filter {
     Student * stu;
     struct Filter * pre;
@@ -46,8 +46,6 @@ typedef struct FilterList {
     Filter * head;
     Filter * tail;
 } FilterList;
-
-
 
 
 
@@ -85,7 +83,6 @@ void filterByMajor(char * major, FilterList * filterList);
 
 
 
-
 // UI
 void addStudentUI(School * school);
 void multiFilterUI (School * school);
@@ -98,16 +95,16 @@ void filterByMajorUI(FilterList * filterList);
 
 
 
-
 // stat
 void showStat(FilterList * filterList);
 
 
 
 
+
 // file operation
 void readFile (School * school);
-
+void backup(void);
 
 
 

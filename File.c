@@ -41,3 +41,22 @@ void readFile (School * school){
 
 
 
+
+
+void backup(void){
+    char c[4096];
+    //create and write to file
+    FILE * source = fopen("stu.txt","r");
+    FILE * backup = fopen("backup.txt","w");   
+
+    while (!feof(source)) {
+        size_t bytes = fread(c,1,sizeof(c),source);
+        if (bytes) {
+            fwrite(c,1,bytes,backup);
+        }
+    }
+    //close streams
+    fclose(source);
+    fclose(backup);
+    return;
+}

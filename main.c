@@ -12,5 +12,6 @@ int main(void){
     // showStudent(&school);
     // testing filter
     multiFilterUI(&school);
+    backup();
     return 0;
 }
