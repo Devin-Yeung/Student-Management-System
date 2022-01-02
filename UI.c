@@ -10,10 +10,72 @@ void addStudentUI(School * school){
     Student * pstu = malloc(sizeof(Student));
     memset(pstu,0,sizeof(Student));
 
+    // get name
+    printf("请输入学生姓名:\n");
+    fflush(stdin);
+    while( scanf("%s",pstu -> name) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    // get major
+    printf("请输入学生专业:\n");
+    fflush(stdin);
+   
+    while( scanf("%s",pstu -> major) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+
     // get year
-    int year;
     printf("请输入入学年份:\n");
-    scanf("%d",&year);
+    fflush(stdin);
+    while( scanf("%d",&pstu -> year) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    // get class
+    printf("请输入学生班级:\n");
+    fflush(stdin);
+    while( scanf("%d",&pstu -> class) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    // get score
+    printf("请输入学生数学成绩:\n");
+    fflush(stdin);
+    while( scanf("%f",&pstu -> math) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    printf("请输入学生英语成绩:\n");
+    fflush(stdin);
+    while( scanf("%f",&pstu -> english) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    printf("请输入学生语文成绩:\n");
+    fflush(stdin);
+    while( scanf("%f",&pstu -> chinese) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    printf("请输入学生课外成绩:\n");
+    fflush(stdin);
+    while( scanf("%f",&pstu -> outclass) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    pstu -> inclass = (pstu -> math) + (pstu -> english) + (pstu -> chinese);
+    
+    pstu -> gpa = 0.7 * (pstu -> inclass) + 0.3 * (pstu -> outclass);
 
     addStudent(pstu,school);
     return;
