@@ -43,6 +43,44 @@ void readFile (School * school){
 
 
 
+void writeFile (School * school){
+
+    FILE * fp = fopen("stu.txt","w");
+    fflush(fp);
+    if(fp == NULL){
+        printf("无法打开文件!");
+        return;
+    }
+
+        // check if list is empty
+    if(school -> head == NULL){
+        return;
+    }
+    Student * stu = school -> head;
+    // walk through the stu list
+    while(stu != NULL){
+
+
+        fprintf(fp,"%s %s %d %d %.2f %.2f %.2f %.2f %.2f %.2f\n",
+                                                                        stu -> major,
+                                                                        stu -> name,
+                                                                        stu -> year,
+                                                                        stu -> class,
+                                                                        stu -> math,
+                                                                        stu -> english,
+                                                                        stu -> chinese,
+                                                                        stu -> inclass,
+                                                                        stu -> outclass,
+                                                                        stu -> gpa);
+        // advance pointer
+        stu = stu -> next;
+    }
+}
+
+
+
+
+
 void backup(void){
     char c[4096];
     //create and write to file

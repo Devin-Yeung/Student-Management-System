@@ -108,6 +108,7 @@ void showStat(FilterList * filterList);
 
 // file operation
 void readFile (School * school);
+void writeFile (School * school);
 void backup(void);
 
 
