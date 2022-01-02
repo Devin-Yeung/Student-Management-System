@@ -323,3 +323,22 @@ void filterByMajor(char * major, FilterList * filterList){
         }
     }
 }
+
+
+
+
+
+void delByFilter (FilterList * filterList, School * school){
+
+    if(filterList -> head == NULL){
+        printf("List is empty!\n");
+        return;
+    }
+
+    Filter * pfilter = filterList -> head;
+    while(pfilter != NULL){
+        delStudent(pfilter -> stu, school);
+        pfilter = pfilter -> next;
+    }
+    return;
+}

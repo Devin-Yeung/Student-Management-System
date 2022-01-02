@@ -184,6 +184,7 @@ void multiFilterUI(School * school){
                     showFilter(&filterList);
                     break;
             case 7:
+                    delByFilter(&filterList,school);
                     break;
             case 8:
                     break;
