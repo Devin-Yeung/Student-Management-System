@@ -43,7 +43,7 @@ void initSeed(void){
 
 int randomInt(int lower, int upper){
     srand(globalSeed);
-    globalSeed = rand();
+    globalSeed = rand() + 1;
     return (rand() % (upper - lower + 1)) + lower;
 }
 
