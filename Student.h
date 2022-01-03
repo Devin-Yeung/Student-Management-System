@@ -55,7 +55,7 @@ typedef struct Major{
 } Major;
 
 
-
+enum Discipline {ENGLISH, CHINESE, MATH, OUTCLASS};
 
 
 // Data operations
@@ -90,11 +90,17 @@ void delByFilter (FilterList * filterList, School * school);
 
 // UI
 void addStudentUI(School * school);
+void modifyStudentUI(FilterList * filterList);
 void multiFilterUI (School * school);
 void filterByClassUI(FilterList * filterList);
 void filterByYearUI(FilterList * filterList);
 void filterByNameUI(FilterList * filterList);
 void filterByMajorUI(FilterList * filterList);
+void getNameUI(Student * pstu);
+void getMajorUI (Student * pstu);
+void getYearUI(Student * pstu);
+void getClassUI (Student * pstu);
+void getScoreUI(enum Discipline discipline, Student * pstu);
 
 
 
