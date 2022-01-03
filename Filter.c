@@ -330,7 +330,7 @@ void filterByMajor(char * major, FilterList * filterList){
 
 
 
-void delByFilter (FilterList * filterList, School * school){
+void delByFilter (School * school, FilterList * filterList){
 
     if(filterList -> head == NULL){
         printf("列表为空!无法为您删除数据!\n");
@@ -342,5 +342,42 @@ void delByFilter (FilterList * filterList, School * school){
         delStudent(pfilter -> stu, school);
         pfilter = pfilter -> next;
     }
+
+    initFilter(school,filterList);
+    return;
+}
+
+
+
+
+
+void keepByFilter(School * school, FilterList * filterList){
+    if(filterList -> head == NULL){
+        printf("列表为空!无法为您保留数据!\n");
+        return;
+    }
+
+    Filter * pfilter = filterList -> head;
+    Student * pstu = school -> head;
+    while(pstu != NULL){
+        // advance pstu
+        Student * tmp = pstu -> next;
+
+        if(pfilter != NULL && pstu != pfilter -> stu){
+            delStudent(pstu, school);
+        }
+        else if(pfilter != NULL && pstu == pfilter -> stu){
+            // advance pointer
+            pfilter = pfilter -> next;
+        }
+        else if(pfilter == NULL && pstu != NULL){
+            delStudent(pstu, school);
+        }
+
+        // advance pstu
+        pstu = tmp;
+    }
+
+    initFilter(school,filterList);
     return;
 }

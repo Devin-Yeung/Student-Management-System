@@ -299,9 +299,10 @@ void multiFilterUI(School * school){
                     initFilter(school,&filterList);
                     break;
             case 7:
-                    delByFilter(&filterList,school);
+                    delByFilter(school,&filterList);
                     break;
             case 8:
+                    keepByFilter(school,&filterList);
                     break;
             case 9:
                     showStat(&filterList);
@@ -314,6 +315,7 @@ void multiFilterUI(School * school){
                     modifyStudentUI(school,&filterList);
                     break;
             case 12:
+                    destoryFilter(&filterList);
                     return;
                     break;
             default:
