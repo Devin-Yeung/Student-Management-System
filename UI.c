@@ -32,7 +32,7 @@ void addStudentUI(School * school){
 
 
 
-void modifyStudentUI(FilterList * filterList){
+void modifyStudentUI(School * school, FilterList * filterList){
 
     if(filterList -> head != filterList -> tail){
         printf("您正在尝试同时修改多个学生的信息，请指定具体的学生再进行修改\n");
@@ -43,16 +43,17 @@ void modifyStudentUI(FilterList * filterList){
 
         // create a new student
         Student * pstu = filterList -> head -> stu;
-
+        showFilter(school,filterList);
         printf("*==================================*\n");
-        printf("*      1) Modify Name              *\n");
-        printf("*      2) Modify Major             *\n");
-        printf("*      3) Modify Class             *\n");
-        printf("*      4) Modify Math Score        *\n");
-        printf("*      5) Modify English Score     *\n");
-        printf("*      6) Modify Chinese Score     *\n");
-        printf("*      7) Modify Outclass Score    *\n");
-        printf("*      8) Quit                    *\n");
+        printf("*           1) 修改姓名               \n");
+        printf("*           2) 修改专业               \n");
+        printf("*           3) 修改入学年份            \n");
+        printf("*           4) 修改班级               \n");
+        printf("*           5) 修改数学成绩            \n");
+        printf("*           6) 修改英语成绩            \n");
+        printf("*           7) 修改语文成绩            \n");
+        printf("*           8) 修改课外成绩           \n");
+        printf("*           9) 退出修改               \n");
         printf("*==================================*\n");
         printf("Please enter the choice number to select the operation:");
         // clean stdin
@@ -67,26 +68,29 @@ void modifyStudentUI(FilterList * filterList){
                     getMajorUI(pstu);
                     break;
             case 3:
-                    getClassUI(pstu);
+                    getYearUI(pstu);
                     break;
             case 4:
-                    getScoreUI(MATH,pstu);
+                    getClassUI(pstu);
                     break;
             case 5:
-                    getScoreUI(ENGLISH,pstu);
+                    getScoreUI(MATH,pstu);
                     break;
             case 6:
-                    getScoreUI(CHINESE,pstu);
+                    getScoreUI(ENGLISH,pstu);
                     break;
             case 7:
-                    getScoreUI(OUTCLASS,pstu);
+                    getScoreUI(CHINESE,pstu);
                     break;
             case 8:
+                    getScoreUI(OUTCLASS,pstu);
+                    break;
+            case 9:
                     return;
                     break;
             default: 
-                    printf("Wrong option!\n");
-                    return;
+                    printf("您输入了错误的选择!\n");
+                    printf("请重新选择!\n");
                     break;
         }
     }
@@ -263,7 +267,8 @@ void multiFilterUI(School * school){
         printf("*        8) 仅保留当前查询到的学生             \n");
         printf("*        9) 统计当前查询到的学生的分数          \n");
         printf("*        10) 对当前查询到的学生的GPA排序        \n");
-        printf("*        11) 退出查询                         \n");
+        printf("*        11) 修改当前学生信息                  \n");
+        printf("*        12) 退出查询                         \n");
         printf("*=========================================*\n");
         printf("请根据您的需求选择功能:");
         // clean stdin
@@ -306,11 +311,15 @@ void multiFilterUI(School * school){
                     showFilter(school,&filterList);
                     break;
             case 11:
+                    modifyStudentUI(school,&filterList);
+                    break;
+            case 12:
                     return;
                     break;
             default:
+                    printf("您输入了错误的选择!\n");
+                    printf("请重新选择!\n");
                     break;
-
         }
     }
     destoryFilter(&filterList);

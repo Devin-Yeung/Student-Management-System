@@ -90,7 +90,7 @@ void delByFilter (FilterList * filterList, School * school);
 
 // UI
 void addStudentUI(School * school);
-void modifyStudentUI(FilterList * filterList);
+void modifyStudentUI(School * school, FilterList * filterList);
 void multiFilterUI (School * school);
 void filterByClassUI(FilterList * filterList);
 void filterByYearUI(FilterList * filterList);
