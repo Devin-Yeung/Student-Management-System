@@ -23,7 +23,7 @@ void showStat(FilterList * filterList){
 
     Filter * pfilter = filterList -> head;
     if(pfilter == NULL){
-        printf("List is empty");
+        printf("列表为空!无法为您统计数据!\n");
         return;
     }
     
@@ -70,17 +70,17 @@ void showStat(FilterList * filterList){
 
 
     // output
-    printf("GPA avg is %.2f\n",gpaAvg);
-    printf("GPA max is %.2f\n",gpaMax);
-    printf("GPA min is %.2f\n",gpaMin);
+    printf("平均 GPA 为 %.2f\n",gpaAvg);
+    printf("最高 GPA 为 %.2f\n",gpaMax);
+    printf("最低 GPA 为 %.2f\n",gpaMin);
     
-    printf("Inclass avg is %.2f\n",inclassAvg);
-    printf("Inclass max is %.2f\n",inclassMax);
-    printf("Inclass min is %.2f\n",inclassMin);
+    printf("平均课内总成绩为 %.2f\n",inclassAvg);
+    printf("最高课内总成绩为 %.2f\n",inclassMax);
+    printf("最低课内总成绩为 %.2f\n",inclassMin);
 
-    printf("Outclass avg is %.2f\n",outclassAvg);
-    printf("Outclass max is %.2f\n",outclassMax);
-    printf("Outclass min is %.2f\n",outclassMin);
+    printf("平均课外总成绩为 %.2f\n",outclassAvg);
+    printf("最高课外总成绩为 %.2f\n",outclassMax);
+    printf("最高课外总成绩为 %.2f\n",outclassMin);
 
 }
 
@@ -92,7 +92,7 @@ void statGpaByInterval(int interval, FilterList * filterList){
 
     // check if list is empty
     if(filterList -> head == NULL){
-        printf("List is empty!\n");
+        printf("列表为空!无法为您统计数据!\n");
         return;
     }
 
@@ -123,9 +123,6 @@ void statGpaByInterval(int interval, FilterList * filterList){
         int upper = (min + (i + 1) * interval < max) ? (min + (i + 1) * interval) : max;
         printf("%d分 ~ %d分 共 %d 人\n",lower, upper, statList[i]);
     }
-
-
-
 
     free(statList);
     return;

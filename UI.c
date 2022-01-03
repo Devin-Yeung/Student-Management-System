@@ -35,7 +35,7 @@ void addStudentUI(School * school){
 void modifyStudentUI(FilterList * filterList){
 
     if(filterList -> head != filterList -> tail){
-        printf("您正在尝试同时修改多个同学的信息，请指定具体的同学再进行修改\n");
+        printf("您正在尝试同时修改多个学生的信息，请指定具体的学生再进行修改\n");
         return;
     }
 

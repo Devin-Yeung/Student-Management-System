@@ -213,7 +213,7 @@ void sortFilter(FilterList * filterList){
 void showFilter(FilterList * filterList){
 
     if(filterList -> head == NULL){
-        printf("Nothing match\n");
+        printf("没有匹配的搜索结果!\n");
         return;
     }
 
@@ -331,7 +331,7 @@ void filterByMajor(char * major, FilterList * filterList){
 void delByFilter (FilterList * filterList, School * school){
 
     if(filterList -> head == NULL){
-        printf("List is empty!\n");
+        printf("列表为空!无法为您删除数据!\n");
         return;
     }
 

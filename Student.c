@@ -84,7 +84,7 @@ void delStudent(Student * stu, School * school){
 void showStudent(School * school){
 
     if(school -> head == NULL){
-        printf("No Data!\n");
+        printf("无学生数据!\n");
         return;
     }
 
