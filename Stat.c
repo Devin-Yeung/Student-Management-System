@@ -83,3 +83,50 @@ void showStat(FilterList * filterList){
     printf("Outclass min is %.2f\n",outclassMin);
 
 }
+
+
+
+
+
+void statGpaByInterval(int interval, FilterList * filterList){
+
+    // check if list is empty
+    if(filterList -> head == NULL){
+        printf("List is empty!\n");
+        return;
+    }
+
+
+    // init the min score and max score
+    int max = 240;
+    int min = 0;
+
+    // statList store how many students are there in the specific interval
+    int * statList = (int *)malloc(sizeof(int[max / interval + 1]));
+    int counter = 0;
+    for(int i = min; i < max; i += interval, counter++){
+        // walk through the linklist
+        Filter * pfilter = filterList -> head;
+        while(pfilter != NULL){
+            float gpa = pfilter -> stu -> gpa;
+            if(i < gpa && gpa <= i + interval){
+                statList[counter]++;
+            }
+            // advance pointer
+            pfilter = pfilter -> next;
+        }
+    }
+
+    // print out the stat information
+    for(int i = 0; i < counter; i++){
+        int lower = min + i * interval;
+        int upper = (min + (i + 1) * interval < max) ? (min + (i + 1) * interval) : max;
+        printf("%d分 ~ %d分 共 %d 人\n",lower, upper, statList[i]);
+    }
+
+
+
+
+    free(statList);
+    return;
+}

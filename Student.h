@@ -82,6 +82,7 @@ void filterByClass(int class, FilterList * filterList);
 void filterByName(char * name, FilterList * filterList);
 void filterByYear(int year, FilterList * filterList);
 void filterByMajor(char * major, FilterList * filterList);
+void delByFilter (FilterList * filterList, School * school);
 
 
 
@@ -101,7 +102,7 @@ void filterByMajorUI(FilterList * filterList);
 
 // stat
 void showStat(FilterList * filterList);
-
+void statGpaByInterval(int interval, FilterList * filterList);
 
 
 
