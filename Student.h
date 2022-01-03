@@ -77,7 +77,7 @@ void delFilter(Filter * filter, FilterList * filterList);
 Filter * mergeFilter(Filter * f1, Filter * f2);
 Filter * toSortFilter(Filter * head, Filter * tail);
 void sortFilter(FilterList * filterList);
-void showFilter(FilterList * filterList);
+void showFilter(School * school, FilterList * filterList);
 void filterByClass(int class, FilterList * filterList);
 void filterByName(char * name, FilterList * filterList);
 void filterByYear(int year, FilterList * filterList);

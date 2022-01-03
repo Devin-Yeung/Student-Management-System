@@ -210,10 +210,12 @@ void sortFilter(FilterList * filterList){
 }
 
 
-void showFilter(FilterList * filterList){
+void showFilter(School * school, FilterList * filterList){
 
     if(filterList -> head == NULL){
         printf("没有匹配的搜索结果!\n");
+        printf("自动为您重置搜索列表!\n");
+        initFilter(school,filterList);
         return;
     }
 
