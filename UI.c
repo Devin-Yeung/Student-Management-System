@@ -252,20 +252,20 @@ void multiFilterUI(School * school){
     FilterList filterList;
     initFilter(school,&filterList);
     while(1){
-        printf("*==================================*\n");
-        printf("*      1) Search by Class          *\n");
-        printf("*      2) Search by Name           *\n");
-        printf("*      3) Search by Year           *\n");
-        printf("*      4) Serach by Major          *\n");
-        printf("*      5) Search by Score          *\n");
-        printf("*      6) Reset Filter             *\n");
-        printf("*      7) Delete                   *\n");
-        printf("*      8) Keep                     *\n");
-        printf("*      9) Stat                     *\n");
-        printf("*      10) Sort                    *\n");
-        printf("*      11) Quit                    *\n");
-        printf("*==================================*\n");
-        printf("Please enter the choice number to select the operation:");
+        printf("*==========================================*\n");
+        printf("*        1) 根据班级查询                     \n");
+        printf("*        2) 根据姓名查询                     \n");
+        printf("*        3) 根据入学年份查询                  \n");
+        printf("*        4) 根据专业查询                     \n");
+        printf("*        5) 根据分数查询                     \n");
+        printf("*        6) 重置查询条件                     \n");
+        printf("*        7) 删除当前查询到的学生               \n");
+        printf("*        8) 仅保留当前查询到的学生             \n");
+        printf("*        9) 统计当前查询到的学生的分数          \n");
+        printf("*        10) 对当前查询到的学生的GPA排序        \n");
+        printf("*        11) 退出查询                         \n");
+        printf("*=========================================*\n");
+        printf("请根据您的需求选择功能:");
         // clean stdin
         fflush(stdin);
         int choice = 0;
@@ -273,26 +273,25 @@ void multiFilterUI(School * school){
         switch(choice) {
             case 1:
                     filterByClassUI(&filterList);
-                    showFilter(&filterList);
+                    showFilter(school,&filterList);
                     break;
             case 2:
                     filterByNameUI(&filterList);
-                    showFilter(&filterList);
+                    showFilter(school,&filterList);
                     break;
             case 3:
                     filterByYearUI(&filterList);
-                    showFilter(&filterList);
+                    showFilter(school,&filterList);
                     break;
             case 4:
                     filterByMajorUI(&filterList);
-                    showFilter(&filterList);
+                    showFilter(school,&filterList);
                     break;
             case 5:
                     break;
             case 6:
                     destoryFilter(&filterList);
                     initFilter(school,&filterList);
-                    showFilter(&filterList);
                     break;
             case 7:
                     delByFilter(&filterList,school);
@@ -304,7 +303,7 @@ void multiFilterUI(School * school){
                     break;
             case 10:
                     sortFilter(&filterList);
-                    showFilter(&filterList);
+                    showFilter(school,&filterList);
                     break;
             case 11:
                     return;
