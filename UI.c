@@ -327,3 +327,18 @@ void multiFilterUI(School * school){
     destoryFilter(&filterList);
     return;
 }
+
+
+
+
+
+void StatGpaByIntervalUI (FilterList * filterList){
+    int interval = 0;
+    printf("请输入区间大小（粒度）");
+    if(scanf("%d",&interval) != 1){
+        interval = 20;
+        printf("检测到您没有输入,使用默认区间大小20\n");
+    }
+    statGpaByInterval(interval,filterList);
+    return;
+}
