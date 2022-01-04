@@ -267,8 +267,9 @@ void multiFilterUI(School * school){
         printf("*        8) 仅保留当前查询到的学生             \n");
         printf("*        9) 统计当前查询到的学生的分数          \n");
         printf("*        10) 对当前查询到的学生的GPA排序        \n");
-        printf("*        11) 修改当前学生信息                  \n");
-        printf("*        12) 退出查询                         \n");
+        printf("*        11) 按区间统计当前查询到的学生的分数    \n");
+        printf("*        12) 修改当前学生信息                  \n");
+        printf("*        13) 退出查询                         \n");
         printf("*=========================================*\n");
         printf("请根据您的需求选择功能:");
         // clean stdin
@@ -312,9 +313,12 @@ void multiFilterUI(School * school){
                     showFilter(school,&filterList);
                     break;
             case 11:
-                    modifyStudentUI(school,&filterList);
+                    StatGpaByIntervalUI(&filterList);
                     break;
             case 12:
+                    modifyStudentUI(school,&filterList);
+                    break;
+            case 13:
                     destoryFilter(&filterList);
                     return;
                     break;
@@ -333,9 +337,13 @@ void multiFilterUI(School * school){
 
 
 void StatGpaByIntervalUI (FilterList * filterList){
+    char input[256];
     int interval = 0;
     printf("请输入区间大小（粒度）");
-    if(scanf("%d",&interval) != 1){
+    fflush(stdin);
+    fgets(input,256,stdin);
+
+    if((interval = atoi(input)) == 0){
         interval = 20;
         printf("检测到您没有输入,使用默认区间大小20\n");
     }

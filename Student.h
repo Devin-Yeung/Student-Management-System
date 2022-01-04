@@ -102,6 +102,8 @@ void getMajorUI (Student * pstu);
 void getYearUI(Student * pstu);
 void getClassUI (Student * pstu);
 void getScoreUI(enum Discipline discipline, Student * pstu);
+void StatGpaByIntervalUI (FilterList * filterList);
+
 
 
 
