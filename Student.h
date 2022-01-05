@@ -123,4 +123,7 @@ void backup(void);
 
 
 
+// login module
+void passwd_to_string_hash(char * passwd, char string[65]);
+
 #endif
