@@ -1,8 +1,8 @@
-main: main.c Student.h sha-256.h Student.c Filter.c UI.c File.c Stat.c sha-256.c Login.c
+main: main.c Student.h sha-256.h Login.h Student.c Filter.c UI.c File.c Stat.c sha-256.c Login.c
 	@gcc -std=c99 -Wall main.c Student.c Filter.c UI.c File.c Stat.c sha-256.c Login.c -o main.out
 	@./main.out
 
-debug: main.c Student.h sha-256.h Student.c Filter.c UI.c File.c Stat.c sha-256.c Login.c
+debug: main.c Student.h sha-256.h Login.h Student.c Filter.c UI.c File.c Stat.c sha-256.c Login.c
 	@gcc -std=c99 -Wall -g main.c Student.c Filter.c UI.c File.c Stat.c sha-256.c Login.c -o main.out
 	@lldb main.out
 
@@ -19,4 +19,4 @@ clean:
 	fi
 
 zip :
-	@zip release.zip Student.h sha-256.h main.c Student.c Filter.c UI.c File.c Stat.c sha-256.c Login.c FakeData.c main.bat fake.bat
+	@zip release.zip Student.h sha-256.h Login.h main.c Student.c Filter.c UI.c File.c Stat.c sha-256.c Login.c FakeData.c main.bat fake.bat

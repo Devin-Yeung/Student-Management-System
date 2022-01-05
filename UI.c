@@ -1,4 +1,5 @@
 #include "Student.h"
+#include "Login.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -348,5 +349,68 @@ void StatGpaByIntervalUI (FilterList * filterList){
         printf("检测到您没有输入,使用默认区间大小20\n");
     }
     statGpaByInterval(interval,filterList);
+    return;
+}
+
+
+
+
+
+// FIXME: need to check usr
+void addUsrUI(UsrList * usrList){
+    Usr usr;
+    char passwd[PASSWDLEN];
+    memset(passwd,0,sizeof(char[PASSWDLEN]));    
+
+
+    // get usr name
+    printf("请输入用户名（姓名）:");
+    fflush(stdin);
+    while(scanf("%s",usr.usrName) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    printf("请输入用户密码:");
+    fflush(stdin);
+    while(scanf("%[^\n]%*c",passwd) != 1){
+        fflush(stdin);
+        printf("非法输入,请重新输入:\n");
+    }
+
+    // get major
+    printf("请输入所在专业:");
+    fflush(stdin);
+    while(scanf("%s",usr.major) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    // get class
+    printf("请输入所在班级:");
+    fflush(stdin);
+    while(scanf("%d",&usr.class) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    // get year
+    printf("请输入入学年份:");
+    fflush(stdin);
+    while( scanf("%d",&usr.year) != 1){
+        fflush(stdin);
+        printf("输入错误,请重新输入:\n");
+    }
+
+    // crypto the passwd
+    cal_string_hash(passwd, usr.hashedPasswd);
+
+    // cal the digest
+    cal_digest(&usr, usr.digest);
+
+    // testing 
+    printf("%s\n%s\n%s\n",passwd, usr.hashedPasswd, usr.digest);
+
+    addUsr(&usr,usrList);
     return;
 }

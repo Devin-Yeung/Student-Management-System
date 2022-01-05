@@ -3,6 +3,8 @@
 #ifndef _LOGIN_H_
 #define _LOGIN_H_
 
+// define the maximum passwd length
+#define PASSWDLEN 128
 
 // only super usr can add an teacher account
 // both super and teacher can add an student account
@@ -43,6 +45,11 @@ void delUsr(Usr * usr, UsrList * usrList);
 // crypto module
 void cal_string_hash(char * original_string, char hash_string[65]);
 void cal_digest(Usr * usr, char digest[65]);
+
+
+
+// UI
+void addUsrUI(UsrList * usrList);
 
 
 
