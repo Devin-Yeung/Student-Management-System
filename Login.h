@@ -53,4 +53,9 @@ void addUsrUI(UsrList * usrList);
 
 
 
+// File operations
+void readUsr (UsrList * usrList);
+
+
+
 #endif

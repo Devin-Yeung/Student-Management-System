@@ -371,6 +371,13 @@ void addUsrUI(UsrList * usrList){
         printf("输入错误,请重新输入:\n");
     }
 
+    printf("请输入用户权限组:");
+    fflush(stdin);
+    while(scanf("%d",&usr -> usrGroup) != 1){
+        fflush(stdin);
+        printf("非法输入,请重新输入:\n");
+    }
+
     printf("请输入用户密码:");
     fflush(stdin);
     while(scanf("%[^\n]%*c",passwd) != 1){
@@ -397,7 +404,7 @@ void addUsrUI(UsrList * usrList){
     // get year
     printf("请输入入学年份:");
     fflush(stdin);
-    while( scanf("%d",&usr -> year) != 1){
+    while(scanf("%d",&usr -> year) != 1){
         fflush(stdin);
         printf("输入错误,请重新输入:\n");
     }

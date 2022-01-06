@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Student.h"
+#include "Login.h"
 
 
 
@@ -97,4 +98,39 @@ void backup(void){
     fclose(source);
     fclose(backup);
     return;
+}
+
+
+
+
+
+void readUsr (UsrList * usrList){
+    FILE * fp = fopen("passwd.txt","r");
+    if(fp == NULL){
+        printf("无法打开文件!");
+        return;
+    }
+    
+
+    while(1){
+        Usr * usr = (Usr*)malloc(sizeof(Usr));
+        memset(usr,0,sizeof(Usr));
+        int count = 0;
+        count  = fscanf(fp,"%s%d%s%d%d%s%s",
+        usr -> usrName,
+        &usr -> usrGroup,
+        usr -> major,
+        &usr -> class,
+        &usr -> year,
+        usr -> hashedPasswd,
+        usr -> digest);
+        
+        // if counter < 7 means EOF or wrong file input
+        if(count != 7){
+            break;
+        }
+        addUsr(usr,usrList);
+    }
+    return;
+
 }
