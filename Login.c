@@ -116,3 +116,73 @@ void delUsr(Usr * usr, UsrList * usrList){
         free(usr);
     }
 }
+
+
+
+
+
+_Bool login(char * usrName, char * passwd, Usr * currentUsr, UsrList * usrList){
+
+    // check if is root usr
+    if(strcmp(usrName,"root") == 0){
+        if(strcmp("root",passwd) == 0){
+            Usr rootUsr = {"root", SUPER, "ALL", 0, 0};
+            rootUsr.next = NULL;
+            rootUsr.pre = NULL;
+            *currentUsr = rootUsr;
+            printf("@@@  LOGIN AS ROOT  @@@\n");
+            return 1;
+        }
+        else {
+            printf("密码错误,请重新登录或注册新用户\n");
+            return 0;
+        }
+    }
+
+
+    if (usrList -> head == NULL){
+        printf("未找到该用户,请先注册!\n");
+        return 0;
+    }
+
+    // walk through the usrList
+    Usr * pusr = usrList -> head;
+    // check if usr exist
+    _Bool haveThisUsr = 0;
+    while(pusr != NULL){
+        if(strcmp(pusr -> usrName,usrName) == 0){
+            haveThisUsr = 1;
+            break;
+        }
+        // advance pointer
+        pusr = pusr -> next;
+    }
+
+    if(haveThisUsr == 0){
+        printf("未找到该用户,请先注册!\n");
+        return 0;
+    }
+
+    // check data integrity
+    char digest[65];
+    cal_digest(pusr,digest);
+    if( strcmp(pusr -> digest,digest) != 0 ){
+        printf("检测到用户信息被恶意篡改,自动从系统中删除该用户\n");
+        delUsr(pusr,usrList);
+        return 0;
+    }
+
+    // check passwd
+    char hashedPasswd[65];
+    cal_string_hash(passwd,hashedPasswd);
+    if( strcmp(pusr -> hashedPasswd, hashedPasswd) == 0){
+        currentUsr = pusr;
+        printf("@@@  LOGIN SUCCESSFULLY @@@\n");
+        return 1;
+    }
+    else {
+        printf("密码错误,请重新登录或注册新用户\n");
+        return 0;
+    }
+
+}

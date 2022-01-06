@@ -371,6 +371,7 @@ void addUsrUI(UsrList * usrList){
         printf("输入错误,请重新输入:\n");
     }
 
+    // FIXME: Need to improve here
     printf("请输入用户权限组:");
     fflush(stdin);
     while(scanf("%d",&usr -> usrGroup) != 1){
@@ -419,5 +420,35 @@ void addUsrUI(UsrList * usrList){
     printf("%s\n%s\n%s\n",passwd, usr -> hashedPasswd, usr -> digest);
 
     addUsr(usr,usrList);
+    return;
+}
+
+
+
+
+
+
+void loginUI (Usr * currentUsr, UsrList * usrList){
+    char passwd[PASSWDLEN];
+    char usrName[NAMELEN];
+    memset(passwd,0,sizeof(char[PASSWDLEN]));   
+    memset(usrName,0,sizeof(char[NAMELEN]));
+    
+    // get usr name
+    printf("请输入用户名（姓名）:");
+    fflush(stdin);
+    while(scanf("%s",usrName) != 1){
+        fflush(stdin);
+        printf("非法输入,请重新输入:\n");
+    }
+
+    printf("请输入用户密码:");
+    fflush(stdin);
+    while(scanf("%[^\n]%*c",passwd) != 1){
+        fflush(stdin);
+        printf("非法输入,请重新输入:\n");
+    }
+
+    login(usrName,passwd,currentUsr,usrList);
     return;
 }
