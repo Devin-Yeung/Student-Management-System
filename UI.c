@@ -356,7 +356,6 @@ void StatGpaByIntervalUI (FilterList * filterList){
 
 
 
-// FIXME: need to check usr
 void addUsrUI(Usr * currentUsr, UsrList * usrList){
     Usr * usr = (Usr*)malloc(sizeof(Usr));
     char passwd[PASSWDLEN];
@@ -364,16 +363,34 @@ void addUsrUI(Usr * currentUsr, UsrList * usrList){
 
 
     // get usr name
-    printf("请输入用户名（姓名）:");
-    fflush(stdin);
-    while(scanf("%s",usr -> usrName) != 1){
+    while(1){
+        printf("请输入用户名（姓名）:");
         fflush(stdin);
-        printf("非法输入,请重新输入:\n");
+        while(scanf("%s",usr -> usrName) != 1){
+            fflush(stdin);
+            printf("非法输入,请重新输入:\n");
+        }
+
+        // check if usr is existed in the system
+        Usr * pscan = usrList -> head;
+        _Bool haveThisUsr = 0;
+        while(pscan != NULL){
+            if( strcmp(usr -> usrName, pscan -> usrName) == 0 ){
+                haveThisUsr = 1;
+                break;
+            }
+            pscan = pscan -> next;
+        }
+        if(haveThisUsr == 1){
+            printf("系统中已存在该用户,请尝试使用其他用户名\n");
+            continue;
+        }
+        // already pass the check
+        break;
     }
 
-    // FIXME: Need to improve here
     while(1){
-        printf("请输入用户权限组:");
+        printf("请选择用户权限组:");
         // give options by the usrGroup
         if(currentUsr -> usrGroup == SUPER){
             printf("(%d) 管理员 (%d) 教师 (%d) 学生",SUPER,TEACHER,STUDENT);
@@ -408,7 +425,10 @@ void addUsrUI(Usr * currentUsr, UsrList * usrList){
                 printf("请重新输入!\n");
                 continue;
             }
-            else; // NULL sentence
+            else{
+                // already passed the check
+                break;
+            }
         }
         else{
             // already passed the check

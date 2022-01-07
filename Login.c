@@ -176,8 +176,8 @@ _Bool login(char * usrName, char * passwd, Usr * currentUsr, UsrList * usrList){
     char hashedPasswd[65];
     cal_string_hash(passwd,hashedPasswd);
     if( strcmp(pusr -> hashedPasswd, hashedPasswd) == 0){
-        currentUsr = pusr;
-        printf("@@@  LOGIN SUCCESSFULLY @@@\n");
+        *currentUsr = *pusr;
+        printf("@@@  LOGIN SUCCESSFULLY  @@@\n");
         return 1;
     }
     else {
