@@ -38,6 +38,9 @@ void readFile (School * school){
 
         addStudent(stu,school);
     }
+    
+    fclose(fp);
+    return;
 }
 
 
@@ -47,11 +50,11 @@ void readFile (School * school){
 void writeFile (School * school){
 
     FILE * fp = fopen("stu.txt","w");
-    fflush(fp);
     if(fp == NULL){
         printf("无法打开文件!");
         return;
     }
+    fflush(fp);
 
         // check if list is empty
     if(school -> head == NULL){
@@ -76,6 +79,9 @@ void writeFile (School * school){
         // advance pointer
         stu = stu -> next;
     }
+
+    fclose(fp);
+    return;
 }
 
 
@@ -131,6 +137,44 @@ void readUsr (UsrList * usrList){
         }
         addUsr(usr,usrList);
     }
-    return;
 
+    fclose(fp);
+    return;
+}
+
+
+
+
+
+void writeUsr (UsrList * usrList){
+
+    if (usrList -> head == NULL){
+        return;
+    }
+
+
+    FILE * fp = fopen("passwd.txt","w");
+    if(fp == NULL){
+        printf("无法打开文件!");
+        return;
+    }
+    fflush(fp);
+
+    Usr * pusr = usrList -> head;
+    
+    while(pusr != NULL){
+        fprintf(fp,"%s %d %s %d %d %s %s\n",
+        pusr -> usrName,
+        pusr -> usrGroup,
+        pusr -> major,
+        pusr -> class,
+        pusr -> year,
+        pusr -> hashedPasswd,
+        pusr -> digest);
+        // advance pointer
+        pusr = pusr -> next;
+    }
+    
+    fclose(fp);
+    return;
 }

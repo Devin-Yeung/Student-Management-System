@@ -55,6 +55,7 @@ void loginUI (Usr * currentUsr, UsrList * usrList);
 
 // File operations
 void readUsr (UsrList * usrList);
+void writeUsr (UsrList * usrList);
 
 
 
