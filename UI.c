@@ -159,7 +159,7 @@ void getNameUI(Student * pstu){
     fflush(stdin);
     while(scanf("%s",pstu -> name) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
+        printf("非法输入,请重新输入:\n");
     }
     return;
 }
@@ -175,7 +175,7 @@ void getMajorUI (Student * pstu){
    
     while( scanf("%s",pstu -> major) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
+        printf("非法输入,请重新输入:\n");
     }
 }
 
@@ -189,7 +189,7 @@ void getClassUI (Student * pstu){
     fflush(stdin);
     while(scanf("%d",&pstu -> class) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
+        printf("非法输入,请重新输入:\n");
     }
 }
 
@@ -203,7 +203,7 @@ void getYearUI(Student * pstu){
     fflush(stdin);
     while( scanf("%d",&pstu -> year) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
+        printf("非法输入,请重新输入:\n");
     }
 }
 
@@ -244,7 +244,7 @@ void getScoreUI(enum Discipline discipline, Student * pstu){
     fflush(stdin);
     while(scanf("%f",pscore) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
+        printf("非法输入,请重新输入:\n");
     }
     return;
 }
@@ -357,7 +357,7 @@ void StatGpaByIntervalUI (FilterList * filterList){
 
 
 // FIXME: need to check usr
-void addUsrUI(UsrList * usrList){
+void addUsrUI(Usr * currentUsr, UsrList * usrList){
     Usr * usr = (Usr*)malloc(sizeof(Usr));
     char passwd[PASSWDLEN];
     memset(passwd,0,sizeof(char[PASSWDLEN]));    
@@ -368,17 +368,55 @@ void addUsrUI(UsrList * usrList){
     fflush(stdin);
     while(scanf("%s",usr -> usrName) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
-    }
-
-    // FIXME: Need to improve here
-    printf("请输入用户权限组:");
-    fflush(stdin);
-    while(scanf("%d",&usr -> usrGroup) != 1){
-        fflush(stdin);
         printf("非法输入,请重新输入:\n");
     }
 
+    // FIXME: Need to improve here
+    while(1){
+        printf("请输入用户权限组:");
+        // give options by the usrGroup
+        if(currentUsr -> usrGroup == SUPER){
+            printf("(%d) 管理员 (%d) 教师 (%d) 学生",SUPER,TEACHER,STUDENT);
+        }
+        else if(currentUsr -> usrGroup == TEACHER){
+            printf("(%d) 学生",STUDENT);
+        }
+        else {
+            printf("您没有权限配置用户权限!");
+            free(usr);
+            return;
+        }
+
+        fflush(stdin);
+        while(scanf("%d",&usr -> usrGroup) != 1){
+            fflush(stdin);
+            printf("非法输入,请重新输入:\n");
+        }
+        
+        // check input
+        if(usr -> usrGroup != SUPER && usr -> usrGroup != STUDENT && usr -> usrGroup != TEACHER){
+            // reset usrGroup to student
+            usr -> usrGroup = STUDENT;
+            printf("非法输入,请重新输入:\n");
+            continue;
+        }
+        else if(currentUsr -> usrGroup == TEACHER){
+
+            if(usr -> usrGroup != STUDENT){
+                usr -> usrGroup = STUDENT;
+                printf("您没有权限添加该类型的用户!\n");
+                printf("请重新输入!\n");
+                continue;
+            }
+            else; // NULL sentence
+        }
+        else{
+            // already passed the check
+            break;
+        }
+    }
+
+    
     printf("请输入用户密码:");
     fflush(stdin);
     while(scanf("%[^\n]%*c",passwd) != 1){
@@ -391,7 +429,7 @@ void addUsrUI(UsrList * usrList){
     fflush(stdin);
     while(scanf("%s",usr -> major) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
+        printf("非法输入,请重新输入:\n");
     }
 
     // get class
@@ -399,7 +437,7 @@ void addUsrUI(UsrList * usrList){
     fflush(stdin);
     while(scanf("%d",&usr -> class) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
+        printf("非法输入,请重新输入:\n");
     }
 
     // get year
@@ -407,7 +445,7 @@ void addUsrUI(UsrList * usrList){
     fflush(stdin);
     while(scanf("%d",&usr -> year) != 1){
         fflush(stdin);
-        printf("输入错误,请重新输入:\n");
+        printf("非法输入,请重新输入:\n");
     }
 
     // crypto the passwd
