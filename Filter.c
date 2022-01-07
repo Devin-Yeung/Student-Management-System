@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 
 
@@ -324,6 +325,70 @@ void filterByMajor(char * major, FilterList * filterList){
             pfilter = pfilter -> next;
         }
     }
+}
+
+
+
+
+
+// if lower = -1 means no lower score limitation
+// if upper = -1 means no larger score limitation
+void filterByScore (float lower, float upper, FilterList * filterList){
+    Filter * pfilter = filterList -> head;
+
+    if(lower == -1 && upper == -1){
+        // do nothing
+        return;
+    }
+    else if(lower == -1){
+        while(pfilter != NULL){
+            if( pfilter -> stu -> gpa >= upper ){
+                Filter * tmp = pfilter -> next;
+                delFilter(pfilter,filterList);
+                pfilter = tmp;
+            }
+            else{
+                pfilter = pfilter -> next;
+            }
+        }
+    }
+    else if(upper == -1){
+        while(pfilter != NULL){
+            if( pfilter -> stu -> gpa <= lower ){
+                Filter * tmp = pfilter -> next;
+                delFilter(pfilter,filterList);
+                pfilter = tmp;
+            }
+            else{
+                pfilter = pfilter -> next;
+            }
+        }
+    }
+    else if( fabs(upper - lower) <= 10e-5 ){
+        while(pfilter != NULL){
+            if( fabs(pfilter -> stu -> gpa - (upper + lower)/2 ) >= 10e-5 ){
+                Filter * tmp = pfilter -> next;
+                delFilter(pfilter,filterList);
+                pfilter = tmp;
+            }
+            else{
+                pfilter = pfilter -> next;
+            }
+        }
+    }
+    else {
+        while(pfilter != NULL){
+            if( pfilter -> stu -> gpa < lower || pfilter -> stu -> gpa > upper ){
+                Filter * tmp = pfilter -> next;
+                delFilter(pfilter,filterList);
+                pfilter = tmp;
+            }
+            else{
+                pfilter = pfilter -> next;
+            }
+        }
+    }
+    return;
 }
 
 

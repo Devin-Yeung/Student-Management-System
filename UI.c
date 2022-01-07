@@ -153,6 +153,32 @@ void filterByMajorUI(FilterList * filterList){
 
 
 
+void filterByScoreUI (FilterList * filterList){
+    float lower;
+    float upper;
+    
+    printf("请设置分数下界(若不设置下界输入-1):");
+    fflush(stdin);
+    while(scanf("%f",&lower) != 1){
+        fflush(stdin);
+        printf("非法输入,请重新输入:\n");
+    }
+
+    printf("请设置分数上界(若不设置上界输入-1):");
+    fflush(stdin);
+    while(scanf("%f",&upper) != 1){
+        fflush(stdin);
+        printf("非法输入,请重新输入:\n");
+    }
+
+    filterByScore(lower,upper,filterList);
+    return;
+}
+
+
+
+
+
 void getNameUI(Student * pstu){
     // get name
     printf("请输入学生姓名:\n");
@@ -295,6 +321,8 @@ void multiFilterUI(School * school){
                     showFilter(school,&filterList);
                     break;
             case 5:
+                    filterByScoreUI(&filterList);
+                    showFilter(school,&filterList);
                     break;
             case 6:
                     destoryFilter(&filterList);

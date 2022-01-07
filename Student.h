@@ -82,6 +82,7 @@ void filterByClass(int class, FilterList * filterList);
 void filterByName(char * name, FilterList * filterList);
 void filterByYear(int year, FilterList * filterList);
 void filterByMajor(char * major, FilterList * filterList);
+void filterByScore (float Lower, float Upper, FilterList * filterList);
 void delByFilter (School * school, FilterList * filterList);
 void keepByFilter(School * school, FilterList * filterList);
 
@@ -97,6 +98,7 @@ void filterByClassUI(FilterList * filterList);
 void filterByYearUI(FilterList * filterList);
 void filterByNameUI(FilterList * filterList);
 void filterByMajorUI(FilterList * filterList);
+void filterByScoreUI (FilterList * filterList);
 void getNameUI(Student * pstu);
 void getMajorUI (Student * pstu);
 void getYearUI(Student * pstu);
