@@ -485,8 +485,8 @@ void addUsrUI(Usr * currentUsr, UsrList * usrList){
 
 
 
-
-void loginUI (Usr * currentUsr, UsrList * usrList){
+// if success, return 1;
+_Bool loginUI (Usr * currentUsr, UsrList * usrList){
     char passwd[PASSWDLEN];
     char usrName[NAMELEN];
     memset(passwd,0,sizeof(char[PASSWDLEN]));   
@@ -507,6 +507,39 @@ void loginUI (Usr * currentUsr, UsrList * usrList){
         printf("非法输入,请重新输入:\n");
     }
 
-    login(usrName,passwd,currentUsr,usrList);
-    return;
+    return login(usrName,passwd,currentUsr,usrList);
+}
+
+
+
+
+
+_Bool usrLoginUI (Usr * usr, UsrList * usrList){
+    // 0 means failure 1 means success
+    _Bool loginStatus = 0;
+    while(loginStatus != 1){
+        printf("*=====================*\n");
+        printf("*       1) 登录        *\n");
+        printf("*       2) 注册        *\n");
+        printf("*       3) 退出        *\n");
+        printf("*=====================*\n");
+        printf("请根据您的需求选择功能:");
+        // clean stdin
+        fflush(stdin);
+        int choice = 0;
+        scanf("%d",&choice);
+        switch(choice) {
+            case 1:
+                loginStatus = loginUI(usr,usrList);
+                break;
+            case 2:
+                // TODO usr registration
+                break;
+            case 3:
+                return loginStatus;
+                break;
+        }
+    }
+
+    return loginStatus;
 }

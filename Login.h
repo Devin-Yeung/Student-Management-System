@@ -49,7 +49,8 @@ void cal_digest(Usr * usr, char digest[65]);
 
 // UI
 void addUsrUI(Usr * usr, UsrList * usrList);
-void loginUI (Usr * currentUsr, UsrList * usrList);
+_Bool loginUI (Usr * currentUsr, UsrList * usrList);
+_Bool usrLoginUI (Usr * usr, UsrList * usrList);
 
 
 
