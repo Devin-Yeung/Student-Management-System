@@ -123,10 +123,10 @@ void delUsr(Usr * usr, UsrList * usrList){
 
 _Bool login(char * usrName, char * passwd, Usr * currentUsr, UsrList * usrList){
 
-    // check if is root usr
-    if(strcmp(usrName,"root") == 0){
-        if(strcmp("root",passwd) == 0){
-            Usr rootUsr = {"root", SUPER, "ALL", 0, 0};
+    // check if is admin usr
+    if(strcmp(usrName,"admin") == 0){
+        if(strcmp("admin",passwd) == 0){
+            Usr rootUsr = {"admin", SUPER, "ALL", 0, 0};
             rootUsr.next = NULL;
             rootUsr.pre = NULL;
             *currentUsr = rootUsr;

@@ -251,7 +251,7 @@ void getScoreUI(enum Discipline discipline, Student * pstu){
             break;
         case CHINESE:
             printf("请输入学生语文成绩:\n");
-            pscore = &pstu -> english;
+            pscore = &pstu -> chinese;
             break;
         case MATH:
             printf("请输入学生数学成绩:\n");
@@ -272,92 +272,6 @@ void getScoreUI(enum Discipline discipline, Student * pstu){
         fflush(stdin);
         printf("非法输入,请重新输入:\n");
     }
-    return;
-}
-
-
-
-
-
-void multiFilterUI(School * school){
-    FilterList filterList;
-    initFilter(school,&filterList);
-    while(1){
-        printf("*==========================================*\n");
-        printf("*        1) 根据班级查询                     \n");
-        printf("*        2) 根据姓名查询                     \n");
-        printf("*        3) 根据入学年份查询                  \n");
-        printf("*        4) 根据专业查询                     \n");
-        printf("*        5) 根据分数查询                     \n");
-        printf("*        6) 重置查询条件                     \n");
-        printf("*        7) 删除当前查询到的学生               \n");
-        printf("*        8) 仅保留当前查询到的学生             \n");
-        printf("*        9) 统计当前查询到的学生的分数          \n");
-        printf("*        10) 对当前查询到的学生的GPA排序        \n");
-        printf("*        11) 按区间统计当前查询到的学生的分数    \n");
-        printf("*        12) 修改当前学生信息                  \n");
-        printf("*        13) 退出查询                         \n");
-        printf("*=========================================*\n");
-        printf("请根据您的需求选择功能:");
-        // clean stdin
-        fflush(stdin);
-        int choice = 0;
-        scanf("%d",&choice);
-        switch(choice) {
-            case 1:
-                    filterByClassUI(&filterList);
-                    showFilter(school,&filterList);
-                    break;
-            case 2:
-                    filterByNameUI(&filterList);
-                    showFilter(school,&filterList);
-                    break;
-            case 3:
-                    filterByYearUI(&filterList);
-                    showFilter(school,&filterList);
-                    break;
-            case 4:
-                    filterByMajorUI(&filterList);
-                    showFilter(school,&filterList);
-                    break;
-            case 5:
-                    filterByScoreUI(&filterList);
-                    showFilter(school,&filterList);
-                    break;
-            case 6:
-                    destoryFilter(&filterList);
-                    initFilter(school,&filterList);
-                    break;
-            case 7:
-                    delByFilter(school,&filterList);
-                    break;
-            case 8:
-                    keepByFilter(school,&filterList);
-                    break;
-            case 9:
-                    showStat(&filterList);
-                    break;
-            case 10:
-                    sortFilter(&filterList);
-                    showFilter(school,&filterList);
-                    break;
-            case 11:
-                    StatGpaByIntervalUI(&filterList);
-                    break;
-            case 12:
-                    modifyStudentUI(school,&filterList);
-                    break;
-            case 13:
-                    destoryFilter(&filterList);
-                    return;
-                    break;
-            default:
-                    printf("您输入了错误的选择!\n");
-                    printf("请重新选择!\n");
-                    break;
-        }
-    }
-    destoryFilter(&filterList);
     return;
 }
 
@@ -565,6 +479,10 @@ _Bool usrLoginUI (Usr * usr, UsrList * usrList){
                 break;
             case 3:
                 return loginStatus;
+                break;
+            default: 
+                printf("您输入了错误的选择!\n");
+                printf("请重新选择!\n");
                 break;
         }
     }

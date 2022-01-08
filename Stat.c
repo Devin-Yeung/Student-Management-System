@@ -103,6 +103,7 @@ void statGpaByInterval(int interval, FilterList * filterList){
 
     // statList store how many students are there in the specific interval
     int * statList = (int *)malloc(sizeof(int[max / interval + 1]));
+    memset(statList,0,sizeof(*statList));
     int counter = 0;
     for(int i = min; i < max; i += interval, counter++){
         // walk through the linklist
