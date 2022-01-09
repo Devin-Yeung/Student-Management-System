@@ -114,7 +114,7 @@ void StatGpaByIntervalUI (FilterList * filterList);
 // stat
 void showStat(FilterList * filterList);
 void statGpaByInterval(int interval, FilterList * filterList);
-
+void showScholars (FilterList * filterList);
 
 
 

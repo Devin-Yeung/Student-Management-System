@@ -46,7 +46,8 @@ int main(void){
         printf("*        11) 按区间统计当前查询到的学生的分数    \n");
         printf("*        12) 添加学生                        \n");        
         printf("*        13) 修改当前学生信息                  \n");
-        printf("*        14) 退出                            \n");
+        printf("*        14) 展示当前班级的获得奖学金的学生       \n");
+        printf("*        15) 退出                            \n");
         printf("*==========================================*\n");
         printf("请根据您的需求选择功能:");
         // clean stdin
@@ -103,6 +104,9 @@ int main(void){
                     modifyStudentUI(&school,&filterList);
                     break;
             case 14:
+                    showScholars(&filterList);
+                    break;
+            case 15:
                     destoryFilter(&filterList);
                     willQuit = 1;
                     break;

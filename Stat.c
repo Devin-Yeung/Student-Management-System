@@ -128,3 +128,51 @@ void statGpaByInterval(int interval, FilterList * filterList){
     free(statList);
     return;
 }
+
+
+
+
+
+void showScholars (FilterList * filterList){
+
+    Filter * pfilter = filterList -> head;
+    _Bool isOneClass = 1;
+    // init class, major, year
+    int class = pfilter -> stu -> class;
+    int year = pfilter -> stu -> year;
+    char * major = pfilter ->  stu -> major;
+    
+    while(pfilter != NULL){
+        Student * pstu = pfilter -> stu;
+        if(pstu -> class != class){
+            isOneClass = 0;
+            printf("检测到超过一个班级的学生,请重新筛选\n");
+            break;
+        }
+        else if(pstu -> year != year){
+            isOneClass = 0;
+            printf("检测到超过一个年级的学生,请重新筛选\n");
+            break;
+        }
+        else if(strcmp(major,pstu -> major) != 0){
+            isOneClass = 0;
+            printf("检测到超过一个班级的学生,请重新筛选\n");
+            break;
+        }
+        pfilter = pfilter -> next;
+    }
+    
+    if(isOneClass){
+        sortFilter(filterList);
+        pfilter = filterList -> head;
+        printf("@@@@@%s系%d级%d班奖学金获奖名单@@@@@\n",major,year,class);
+        for(int i = 1; i <= 10; i++){
+            Student * pstu = pfilter -> stu;
+            if(pfilter == NULL) break;
+            printf("%d.%s => GPA: %.2f\n",i,pstu -> name,pstu -> gpa);
+            pfilter = pfilter -> next;
+        }
+        printf("@@@@@%s系%d级%d班奖学金获奖名单@@@@@\n",major,year,class);
+    }
+    return;
+}
