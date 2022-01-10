@@ -14,6 +14,7 @@ void addStudentUI(School * school){
     getNameUI(pstu);
     getMajorUI(pstu);
     getClassUI(pstu);
+    getYearUI(pstu);
     getScoreUI(MATH,pstu);
     getScoreUI(ENGLISH,pstu);
     getScoreUI(CHINESE,pstu);
