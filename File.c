@@ -11,6 +11,9 @@ void readFile (School * school){
     FILE * fp = fopen("stu.txt","r");
     if(fp == NULL){
         printf("无法打开文件!");
+        // create a new file instead
+        fp = fopen("stu.txt","w");
+        fclose(fp);
         return;
     }
     
@@ -114,6 +117,9 @@ void readUsr (UsrList * usrList){
     FILE * fp = fopen("passwd.txt","r");
     if(fp == NULL){
         printf("无法打开文件!");
+        // create a new file instead
+        fp = fopen("passwd.txt","w");
+        fclose(fp);
         return;
     }
     
